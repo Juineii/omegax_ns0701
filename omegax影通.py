@@ -14,13 +14,13 @@ PRODUCT_NAME = "오메가엑스 1:1 VIDEO CALL EVENT"
 # 格式：{"选项名称": "自定义文件名.csv"}
 # 如果字典为空，则监控所有选项（保持原行为）
 MONITOR_OPTIONS = {
-    "세빈": "SEBIN.csv",
-    "예찬": "YECHAN.csv",
-    "제현": "JEHYUN.csv",
-    "휘찬": "HWICHAN.csv",
-    "XEN": "XEN.csv",
-    "KEVIN": "KEVIN.csv",
-    "재한": "JAEHAN.csv"
+    "세빈": "SEBIN影通.csv",
+    "예찬": "YECHAN影通.csv",
+    "제현": "JEHYUN影通.csv",
+    "휘찬": "HWICHAN影通.csv",
+    "XEN": "XEN影通.csv",
+    "KEVIN": "KEVIN影通.csv",
+    "재한": "JAEHAN影通.csv"
 }
 
 # 数据检查间隔（秒）
