@@ -21,90 +21,6 @@
             padding: 1rem;
         }
 
-        /* ========== 登录页面 ========== */
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            min-height: 100vh;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: #f4f7fb;
-            z-index: 100;
-        }
-
-        .login-card {
-            background: white;
-            border-radius: 1.8rem;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 20px 35px -8px rgba(0, 32, 64, 0.15);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            text-align: center;
-            max-width: 380px;
-            width: 100%;
-        }
-
-        .login-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .login-input {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            font-size: 1rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 2.5rem;
-            outline: none;
-            transition: border 0.2s;
-            background: #f8fafc;
-            color: #0f172a;
-            text-align: center;
-            letter-spacing: 0.3px;
-        }
-
-        .login-input:focus {
-            border-color: #1e4a7a;
-            box-shadow: 0 0 0 3px rgba(30, 74, 122, 0.1);
-        }
-
-        .login-btn {
-            width: 100%;
-            margin-top: 1.2rem;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 2.5rem;
-            background: #1e4a7a;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            letter-spacing: 0.5px;
-        }
-
-        .login-btn:hover {
-            background: #153a60;
-        }
-
-        .login-error {
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            color: #dc2626;
-            min-height: 1.2rem;
-        }
-
-        .login-loading {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        /* ========== 仪表盘 ========== */
         .dashboard {
             max-width: 1400px;
             width: 100%;
@@ -465,6 +381,7 @@
             outline-offset: 2px;
         }
 
+        /* 表格外层容器：禁止整体横向滚动，仅垂直滚动 */
         .table-wrapper {
             border-radius: 1.2rem;
             border: 1px solid #ecf1f7;
@@ -476,6 +393,7 @@
             width: 100%;
         }
 
+        /* 表格采用固定布局，列宽由类决定 */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -483,16 +401,18 @@
             table-layout: fixed;
         }
 
-        .mode-sales th:nth-child(1), .mode-sales td:nth-child(1) { width: 14%; }
-        .mode-sales th:nth-child(2), .mode-sales td:nth-child(2) { width: 40%; }
-        .mode-sales th:nth-child(3), .mode-sales td:nth-child(3) { width: 27%; }
-        .mode-sales th:nth-child(4), .mode-sales td:nth-child(4) { width: 19%; }
+        /* 默认列宽（销量降序模式，共4列） */
+        .mode-sales th:nth-child(1), .mode-sales td:nth-child(1) { width: 14%; }  /* 序号 */
+        .mode-sales th:nth-child(2), .mode-sales td:nth-child(2) { width: 40%; }  /* 时间 */
+        .mode-sales th:nth-child(3), .mode-sales td:nth-child(3) { width: 27%; }  /* 来源 */
+        .mode-sales th:nth-child(4), .mode-sales td:nth-child(4) { width: 19%; }  /* 单笔 */
 
-        .mode-time th:nth-child(1), .mode-time td:nth-child(1) { width: 8%; }
-        .mode-time th:nth-child(2), .mode-time td:nth-child(2) { width: 38%; }
-        .mode-time th:nth-child(3), .mode-time td:nth-child(3) { width: 17%; }
-        .mode-time th:nth-child(4), .mode-time td:nth-child(4) { width: 13%; }
-        .mode-time th:nth-child(5), .mode-time td:nth-child(5) { width: 24%; }
+        /* 时间倒序模式（有标注列，共5列） */
+        .mode-time th:nth-child(1), .mode-time td:nth-child(1) { width: 8%; }  /* 序号 */
+        .mode-time th:nth-child(2), .mode-time td:nth-child(2) { width: 38%; }  /* 时间 */
+        .mode-time th:nth-child(3), .mode-time td:nth-child(3) { width: 17%; }  /* 来源 */
+        .mode-time th:nth-child(4), .mode-time td:nth-child(4) { width: 13%; }  /* 单笔 */
+        .mode-time th:nth-child(5), .mode-time td:nth-child(5) { width: 24%; }  /* 标注按钮 */
 
         th {
             text-align: center;
@@ -575,6 +495,7 @@
             color: white;
         }
 
+        /* 时间列和来源列内部滚动（不换行） */
         .table-wrapper td:nth-child(2),
         .table-wrapper td:nth-child(3) {
             white-space: nowrap;
@@ -583,6 +504,7 @@
             -webkit-overflow-scrolling: touch;
             max-width: 100%;
         }
+        /* 仅来源列保留手感提示 */
         .table-wrapper td:nth-child(3) {
             cursor: grab;
         }
@@ -608,6 +530,7 @@
             flex-wrap: wrap;
         }
 
+        /* 移动端适配：同样使用固定列宽，禁止整体横向滚动 */
         @media screen and (max-width: 640px) {
             .dashboard { padding: 1rem; border-radius: 1.5rem; }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
@@ -634,7 +557,11 @@
             .sort-radio-container { width: 100%; justify-content: space-evenly; }
             .reset-btn { text-align: center; }
             .update-badge { font-size: 0.6rem; padding: 0.2rem 0.6rem; }
-            .table-wrapper { overflow-x: hidden; }
+
+            /* 移动端同样继承列宽比例，禁止整体横向滚动 */
+            .table-wrapper {
+                overflow-x: hidden;
+            }
             .table-wrapper td:nth-child(2),
             .table-wrapper td:nth-child(3) {
                 overflow-x: auto;
@@ -644,141 +571,90 @@
     </style>
 </head>
 <body>
-
-    <!-- ========== 登录页面 ========== -->
-    <div id="loginContainer" class="login-container">
-        <div class="login-card">
-            <div class="login-title">登录</div>
-            <input type="password" id="passwordInput" class="login-input" placeholder="请输入密码" autocomplete="off" />
-            <button id="loginBtn" class="login-btn">登 录</button>
-            <div id="loginError" class="login-error"></div>
-            <p style="font-size:0.7rem; color:#64748b; margin-top:0.6rem; text-align:center; line-height:1.4;">
-                一密码仅限一人同时使用，若因泄露密码导致无法及时查看cut变化，自行负责。
-            </p>
+<div class="dashboard">
+    <div class="header-with-lang">
+        <div class="title-area">
+            <div class="main-title" id="mainTitle">加载中......</div>
+            <div class="sub-title" id="subTitle">加载中......</div>
+        </div>
+        <div class="action-buttons">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="ko">한국어</button>
+            </div>
         </div>
     </div>
 
-    <!-- ========== 仪表盘 ========== -->
-    <div class="dashboard" id="dashboardContainer" style="display: none;">
-        <div class="header-with-lang">
-            <div class="title-area">
-                <div class="main-title" id="mainTitle">加载中......</div>
-                <div class="sub-title" id="subTitle">加载中......</div>
-            </div>
-            <div class="action-buttons">
-                <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="zh">中文</button>
-                    <button class="lang-btn" data-lang="en">English</button>
-                    <button class="lang-btn" data-lang="ko">한국어</button>
-                </div>
+    <div class="help-section" id="helpSection">
+        <div class="help-header" id="helpHeader">
+            <span id="helpTitleSpan">使用说明</span>
+            <span class="help-toggle" id="helpToggleIcon">▼</span>
+        </div>
+        <div class="help-content" id="helpContent" style="display: none;"></div>
+    </div>
+
+    <div class="notice-line" id="noticeLine">请勿分享给他人或进行二次售卖，如发现非我们团队人员在盗用售卖，加我微信（<strong>nsxnso</strong>）说明情况可送一场实时销量。</div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label" id="statLabelTotal">总销量</div>
+            <div class="stat-value"><span class="readonly-value total-value" id="totalSalesDisplay">0</span></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label" id="statLabelQuota">名额人数</div>
+            <div class="stat-value">
+                <span class="readonly-value" id="quotaDisplay">--</span>
             </div>
         </div>
-
-        <div class="help-section" id="helpSection">
-            <div class="help-header" id="helpHeader">
-                <span id="helpTitleSpan">使用说明</span>
-                <span class="help-toggle" id="helpToggleIcon">▼</span>
-            </div>
-            <div class="help-content" id="helpContent" style="display: none;"></div>
+        <div class="stat-card">
+            <div class="stat-label"><div class="threshold-label-wrapper"><span class="label-text" id="thresholdLabelText">注水阈值</span></div></div>
+            <div class="stat-value"><input type="number" id="thresholdInput" min="0" value="0" step="1"></div>
         </div>
-
-        <div class="notice-line" id="noticeLine">请勿分享给他人或进行二次售卖，如发现非我们团队人员在盗用售卖，加我微信（<strong>nsxnso</strong>）说明情况可送一场实时销量。</div>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label" id="statLabelTotal">总销量</div>
-                <div class="stat-value"><span class="readonly-value total-value" id="totalSalesDisplay">0</span></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label" id="statLabelQuota">名额人数</div>
-                <div class="stat-value">
-                    <span class="readonly-value" id="quotaDisplay">--</span>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label"><div class="threshold-label-wrapper"><span class="label-text" id="thresholdLabelText">注水阈值</span></div></div>
-                <div class="stat-value"><input type="number" id="thresholdInput" min="0" value="0" step="1"></div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label" id="statLabelCut">推荐 cut</div>
-                <div class="stat-value"><span class="readonly-value cut-value" id="cutDisplay">—</span></div>
-            </div>
-        </div>
-
-        <div class="table-section">
-            <div class="table-header">
-                <div class="header-row">
-                    <h2><span id="tableTitlePrefix">销量变化实时记录</span><span id="rowCountBadge">0 条</span></h2>
-                    <div class="update-badge">
-                        <span class="dot"></span>
-                        <span id="lastUpdate">更新于 等待数据…</span>
-                    </div>
-                </div>
-                <div class="sort-row">
-                    <div class="sort-radio-container">
-                        <label>
-                            <input type="radio" name="sortOrder" value="timeDesc" checked>
-                            <span id="sortTimeDescLabel">时间倒序</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="sortOrder" value="salesDesc">
-                            <span id="sortSalesDescLabel">销量降序</span>
-                        </label>
-                    </div>
-                    <button class="reset-btn" id="resetManualBtn">重置手动标记</button>
-                </div>
-            </div>
-            <div class="table-wrapper" id="tableWrapper">
-                <table id="dataTable">
-                    <thead id="tableHeader"></thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
-            </div>
-            <div class="footer-note"><span id="footerRefreshHint">数据未更新可刷新网页</span></div>
+        <div class="stat-card">
+            <div class="stat-label" id="statLabelCut">推荐 cut</div>
+            <div class="stat-value"><span class="readonly-value cut-value" id="cutDisplay">—</span></div>
         </div>
     </div>
+
+    <div class="table-section">
+        <div class="table-header">
+            <div class="header-row">
+                <h2><span id="tableTitlePrefix">销量变化实时记录</span><span id="rowCountBadge">0 条</span></h2>
+                <div class="update-badge">
+                    <span class="dot"></span>
+                    <span id="lastUpdate">更新于 等待数据…</span>
+                </div>
+            </div>
+            <div class="sort-row">
+                <div class="sort-radio-container">
+                    <label>
+                        <input type="radio" name="sortOrder" value="timeDesc" checked>
+                        <span id="sortTimeDescLabel">时间倒序</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="sortOrder" value="salesDesc">
+                        <span id="sortSalesDescLabel">销量降序</span>
+                    </label>
+                </div>
+                <button class="reset-btn" id="resetManualBtn">重置手动标记</button>
+            </div>
+        </div>
+        <div class="table-wrapper" id="tableWrapper">
+            <table id="dataTable">
+                <thead id="tableHeader"></thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        <div class="footer-note"><span id="footerRefreshHint">数据未更新可刷新网页</span></div>
+    </div>
+</div>
 
 <script>
     (function(){
-        // =================== 登录与 API 配置 ===================
-        const WORKER_BASE = 'https://juineii.3514263454.workers.dev';
-        const STORAGE_TOKEN_KEY = 'session_token';
-        // 不再使用 STORAGE_DATA_URL_KEY
+        const ACTIVITY_CONFIG = { pageTitle: 'JAEHAN影通', subTitle: '7.1 22:59截止', csvUrl: 'JAEHAN影通.csv', fixedQuota: 10, refreshInterval: 10000, defaultThreshold: 0 };
 
-        // =================== 仪表盘业务配置 ===================
-        const ACTIVITY_CONFIG = {
-            pageTitle: 'JAEHAN影通',
-            subTitle: '7.1 22:59截止',
-            csvUrl: 'JAEHAN影通.csv',                     // 固定写死
-            fixedQuota: 10,
-            refreshInterval: 10000,
-            defaultThreshold: 0
-        };
-
-        // DOM 元素
-        const loginContainer = document.getElementById('loginContainer');
-        const dashboardContainer = document.getElementById('dashboardContainer');
-        const passwordInput = document.getElementById('passwordInput');
-        const loginBtn = document.getElementById('loginBtn');
-        const loginError = document.getElementById('loginError');
-
-        // 会话状态
-        let sessionToken = null;
-        let heartbeatTimer = null;
-        let dashboardInitialized = false;
-
-        // 仪表盘核心变量
-        let elements = {};
-        let currentLang = 'zh';
-        let originalData = [];
-        let sortMode = 'timeDesc';
-        let currentThreshold = ACTIVITY_CONFIG.defaultThreshold;
-        let lastError = null;
-        let lastSuccessTimeStr = null;
-        let isUpdating = false;
-        let manualOverrides = new Map();
-
-        // =================== 多语言资源 ===================
+        // ================= 多语言资源 =================
         const LOCALES = {
             zh: {
                 thSeq: "#", thTime: "时间", thSource: "来源", thUnit: "单笔", thAction: "标注",
@@ -834,118 +710,48 @@
             }
         };
 
-        // =================== 登录相关函数 ===================
-        function showLoginPage() {
-            if (dashboardContainer) dashboardContainer.style.display = 'none';
-            if (loginContainer) loginContainer.style.display = 'flex';
-            if (heartbeatTimer) {
-                clearInterval(heartbeatTimer);
-                heartbeatTimer = null;
-            }
-            sessionToken = null;
-            localStorage.removeItem(STORAGE_TOKEN_KEY);
-        }
+        // DOM 元素引用
+        const elements = {
+            thresholdInput: document.getElementById('thresholdInput'),
+            quotaDisplay: document.getElementById('quotaDisplay'),
+            cutDisplay: document.getElementById('cutDisplay'),
+            totalSalesDisplay: document.getElementById('totalSalesDisplay'),
+            tableHeader: document.getElementById('tableHeader'),
+            tableBody: document.getElementById('tableBody'),
+            lastUpdateSpan: document.getElementById('lastUpdate'),
+            rowCountBadge: document.getElementById('rowCountBadge'),
+            radioTime: document.querySelector('input[name="sortOrder"][value="timeDesc"]'),
+            radioSales: document.querySelector('input[name="sortOrder"][value="salesDesc"]'),
+            thresholdLabelText: document.getElementById('thresholdLabelText'),
+            statLabelQuota: document.getElementById('statLabelQuota'),
+            statLabelCut: document.getElementById('statLabelCut'),
+            statLabelTotal: document.getElementById('statLabelTotal'),
+            tableTitlePrefix: document.getElementById('tableTitlePrefix'),
+            sortTimeDescLabel: document.getElementById('sortTimeDescLabel'),
+            sortSalesDescLabel: document.getElementById('sortSalesDescLabel'),
+            footerRefreshHint: document.getElementById('footerRefreshHint'),
+            helpContent: document.getElementById('helpContent'),
+            helpToggleIcon: document.getElementById('helpToggleIcon'),
+            helpHeader: document.getElementById('helpHeader'),
+            helpTitleSpan: document.getElementById('helpTitleSpan'),
+            resetManualBtn: document.getElementById('resetManualBtn'),
+            noticeLine: document.getElementById('noticeLine'),
+            tableWrapper: document.getElementById('tableWrapper')
+        };
 
-        function showDashboard() {
-            if (loginContainer) loginContainer.style.display = 'none';
-            if (dashboardContainer) dashboardContainer.style.display = '';
-        }
+        // 独立存储（基于 csvUrl）
+        const storageSuffix = ACTIVITY_CONFIG.csvUrl.replace(/[^a-zA-Z0-9]/g, '_');
+        const OVERRIDE_STORAGE_KEY = `nct_watermark_overrides_v3_${storageSuffix}`;
+        const THRESHOLD_STORAGE_KEY = `nct_watermark_threshold_v1_${storageSuffix}`;
 
-        async function performLogin(password) {
-            try {
-                const res = await fetch(`${WORKER_BASE}/login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ password })
-                });
-                const data = await res.json();
-                if (!data.success) {
-                    throw new Error(data.msg || '登录失败');
-                }
-                return data;
-            } catch (err) {
-                throw err;
-            }
-        }
-
-        async function sendHeartbeat() {
-            if (!sessionToken) return false;
-            try {
-                const res = await fetch(`${WORKER_BASE}/heartbeat`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': sessionToken
-                    }
-                });
-                const data = await res.json();
-                if (!data.success) {
-                    throw new Error(data.msg || '心跳失败');
-                }
-                return true;
-            } catch (err) {
-                console.warn('Heartbeat failed:', err.message);
-                return false;
-            }
-        }
-
-        function startHeartbeat() {
-            if (heartbeatTimer) clearInterval(heartbeatTimer);
-            heartbeatTimer = setInterval(async () => {
-                const alive = await sendHeartbeat();
-                if (!alive) {
-                    alert('会话已过期，请重新登录。');
-                    showLoginPage();
-                }
-            }, 60000);
-        }
-
-        function handleLogin() {
-            const password = passwordInput.value.trim();
-            if (!password) {
-                loginError.textContent = '请输入密码';
-                return;
-            }
-            loginBtn.disabled = true;
-            loginBtn.textContent = '登录中...';
-            loginError.textContent = '';
-
-            performLogin(password)
-                .then(data => {
-                    sessionToken = data.token;
-                    // 忽略接口返回的 dataUrl，使用硬编码的 csvUrl
-                    localStorage.setItem(STORAGE_TOKEN_KEY, sessionToken);
-
-                    showDashboard();
-                    if (!dashboardInitialized) {
-                        initDashboard();
-                        dashboardInitialized = true;
-                    } else {
-                        resetDashboardData();
-                        updateStaticTexts();
-                        fetchAndUpdate();
-                        startAutoRefresh();
-                    }
-                    startHeartbeat();
-                })
-                .catch(err => {
-                    loginError.textContent = err.message || '登录失败，请重试';
-                })
-                .finally(() => {
-                    loginBtn.disabled = false;
-                    loginBtn.textContent = '登 录';
-                });
-        }
-
-        loginBtn.addEventListener('click', handleLogin);
-        passwordInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleLogin();
-        });
-
-        // =================== 仪表盘核心逻辑 ===================
-        const STORAGE_SUFFIX = 'meovv';   // 与 IVE 区分
-        const OVERRIDE_STORAGE_KEY = `nct_watermark_overrides_v3_${STORAGE_SUFFIX}`;
-        const THRESHOLD_STORAGE_KEY = `nct_watermark_threshold_v1_${STORAGE_SUFFIX}`;
+        let currentLang = 'zh';
+        let originalData = [];
+        let sortMode = 'timeDesc';
+        let currentThreshold = ACTIVITY_CONFIG.defaultThreshold;
+        let lastError = null;
+        let lastSuccessTimeStr = null;
+        let isUpdating = false;
+        let manualOverrides = new Map();
 
         function getStableId(row) { return `${row.time}|${row.product}`; }
 
@@ -973,7 +779,7 @@
                     currentThreshold = (val >= 0) ? val : 0;
                 } else currentThreshold = ACTIVITY_CONFIG.defaultThreshold;
             } catch(e) { currentThreshold = ACTIVITY_CONFIG.defaultThreshold; }
-            if (elements.thresholdInput) elements.thresholdInput.value = currentThreshold;
+            elements.thresholdInput.value = currentThreshold;
         }
 
         function isWatermarked(row) {
@@ -1006,8 +812,8 @@
             return (sum / ACTIVITY_CONFIG.fixedQuota).toFixed(2);
         }
         function updateStats() {
-            if (elements.totalSalesDisplay) elements.totalSalesDisplay.textContent = computeTotalSales();
-            if (elements.cutDisplay) elements.cutDisplay.textContent = computeCutBasedOnClean();
+            elements.totalSalesDisplay.textContent = computeTotalSales();
+            elements.cutDisplay.textContent = computeCutBasedOnClean();
         }
 
         function t(key, dyn = null) {
@@ -1015,7 +821,6 @@
             return typeof v === 'function' ? v(dyn) : (v || key);
         }
         function updateStaticTexts() {
-            if (!elements.thresholdLabelText) return;
             elements.thresholdLabelText.innerHTML = t('statLabelThreshold');
             elements.statLabelQuota.innerHTML = t('statLabelQuota');
             elements.statLabelCut.innerHTML = t('statLabelCut');
@@ -1031,13 +836,13 @@
             updateLastUpdateText();
         }
         function updateLastUpdateText() {
-            if (!elements.lastUpdateSpan) return;
             if (lastSuccessTimeStr) elements.lastUpdateSpan.textContent = `${t('updatePrefix')} ${lastSuccessTimeStr}`;
             else if (lastError) elements.lastUpdateSpan.textContent = `${t('updatePrefix')} ${t('errorPrefix')}${lastError}`;
             else elements.lastUpdateSpan.textContent = `${t('updatePrefix')} ${t('loadingText')}`;
         }
         function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
+        // 根据当前排序模式设置表格容器的类，以应用对应的列宽
         function setTableModeClass() {
             if (elements.tableWrapper) {
                 if (sortMode === 'timeDesc') {
@@ -1051,7 +856,7 @@
         }
 
         function renderTable() {
-            if (!elements.tableBody) return;
+            // 先更新列宽类
             setTableModeClass();
 
             if (lastError || !originalData.length) {
@@ -1066,7 +871,7 @@
             if (sortMode === 'timeDesc') displayRows = displayRows.reverse();
             else displayRows.sort((a,b) => b.saleValue - a.saleValue);
 
-            let headerHtml = '<tr>';
+            let headerHtml = '</table>';
             headerHtml += `<th>${t('thSeq')}</th><th>${t('thTime')}</th><th>${t('thSource')}</th><th>${t('thUnit')}</th>`;
             if (showActionCol) headerHtml += `<th>${t('thAction')}</th>`;
             headerHtml += '<\/tr>';
@@ -1126,7 +931,6 @@
         }
 
         async function fetchAndUpdate() {
-            if (!ACTIVITY_CONFIG.csvUrl) return;
             if (isUpdating) return;
             isUpdating = true;
             try {
@@ -1154,17 +958,9 @@
                 updateStats();
                 renderTable();
                 updateLastUpdateText();
-            } finally {
-                isUpdating = false;
-            }
+            } finally { isUpdating = false; }
         }
-
-        function startAutoRefresh() {
-            setTimeout(async function tick() {
-                await fetchAndUpdate();
-                if (ACTIVITY_CONFIG.csvUrl) startAutoRefresh();
-            }, ACTIVITY_CONFIG.refreshInterval);
-        }
+        function startAutoRefresh() { setTimeout(async function tick() { await fetchAndUpdate(); startAutoRefresh(); }, ACTIVITY_CONFIG.refreshInterval); }
 
         function handleThresholdChange() {
             let val = parseInt(elements.thresholdInput.value, 10);
@@ -1193,55 +989,17 @@
         let helpExpanded = false;
         function toggleHelp() {
             helpExpanded = !helpExpanded;
-            if (elements.helpContent) elements.helpContent.style.display = helpExpanded ? 'block' : 'none';
-            if (elements.helpToggleIcon) elements.helpToggleIcon.innerHTML = helpExpanded ? '▲' : '▼';
+            elements.helpContent.style.display = helpExpanded ? 'block' : 'none';
+            elements.helpToggleIcon.innerHTML = helpExpanded ? '▲' : '▼';
         }
 
-        function resetDashboardData() {
-            originalData = [];
-            lastError = null;
-            lastSuccessTimeStr = null;
-            updateStats();
-            renderTable();
-            updateLastUpdateText();
-        }
-
-        // =================== 仪表盘初始化 ===================
-        function initDashboard() {
-            elements = {
-                thresholdInput: document.getElementById('thresholdInput'),
-                quotaDisplay: document.getElementById('quotaDisplay'),
-                cutDisplay: document.getElementById('cutDisplay'),
-                totalSalesDisplay: document.getElementById('totalSalesDisplay'),
-                tableHeader: document.getElementById('tableHeader'),
-                tableBody: document.getElementById('tableBody'),
-                lastUpdateSpan: document.getElementById('lastUpdate'),
-                rowCountBadge: document.getElementById('rowCountBadge'),
-                radioTime: document.querySelector('input[name="sortOrder"][value="timeDesc"]'),
-                radioSales: document.querySelector('input[name="sortOrder"][value="salesDesc"]'),
-                thresholdLabelText: document.getElementById('thresholdLabelText'),
-                statLabelQuota: document.getElementById('statLabelQuota'),
-                statLabelCut: document.getElementById('statLabelCut'),
-                statLabelTotal: document.getElementById('statLabelTotal'),
-                tableTitlePrefix: document.getElementById('tableTitlePrefix'),
-                sortTimeDescLabel: document.getElementById('sortTimeDescLabel'),
-                sortSalesDescLabel: document.getElementById('sortSalesDescLabel'),
-                footerRefreshHint: document.getElementById('footerRefreshHint'),
-                helpContent: document.getElementById('helpContent'),
-                helpToggleIcon: document.getElementById('helpToggleIcon'),
-                helpHeader: document.getElementById('helpHeader'),
-                helpTitleSpan: document.getElementById('helpTitleSpan'),
-                resetManualBtn: document.getElementById('resetManualBtn'),
-                noticeLine: document.getElementById('noticeLine'),
-                tableWrapper: document.getElementById('tableWrapper')
-            };
-
-            loadThreshold();
-            loadOverrides();
-
+        function init() {
             document.getElementById('mainTitle').innerText = ACTIVITY_CONFIG.pageTitle;
             document.getElementById('subTitle').innerText = ACTIVITY_CONFIG.subTitle;
             elements.quotaDisplay.textContent = ACTIVITY_CONFIG.fixedQuota;
+
+            loadThreshold();
+            loadOverrides();
 
             elements.thresholdInput.addEventListener('input', handleThresholdChange);
             elements.thresholdInput.addEventListener('blur', handleThresholdChange);
@@ -1252,29 +1010,12 @@
             elements.resetManualBtn.addEventListener('click', () => resetManualOverrides());
 
             updateStaticTexts();
+            // 初始化表格模式类
             setTableModeClass();
             fetchAndUpdate();
             startAutoRefresh();
         }
-
-        // =================== 页面启动逻辑 ===================
-        async function tryAutoLogin() {
-            const savedToken = localStorage.getItem(STORAGE_TOKEN_KEY);
-            if (savedToken) {
-                sessionToken = savedToken;
-                const alive = await sendHeartbeat();
-                if (alive) {
-                    showDashboard();
-                    initDashboard();
-                    dashboardInitialized = true;
-                    startHeartbeat();
-                    return;
-                }
-            }
-            showLoginPage();
-        }
-
-        tryAutoLogin();
+        init();
     })();
 </script>
 </body>
