@@ -26,7 +26,7 @@ MONITOR_OPTIONS = {
 # 数据检查间隔（秒）
 CHECK_INTERVAL = 10
 # 定时推送间隔（秒）
-PUSH_INTERVAL = 60
+PUSH_INTERVAL = 80
 
 # GitHub 配置（请修改为您自己的仓库信息）
 GITHUB_REPO = "Juineii/omegax_ns0701"    # 例如 "Juineii/ive_k40625"
